@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="26dp">
+
+        <TextView
+            android:id="@+id/textNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome: Pedro Henrique"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textIdade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Idade: 24 anos"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textSexo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descrição detalhada do paciente"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="110dp"
+            android:text="Atividades"
+            android:textSize="35sp" />
+
+        <ListView
+            android:id="@+id/listViewAtividade"
+            android:layout_width="match_parent"
+            android:layout_height="283dp">
+
+        </ListView>
+
+        <Button
+            android:id="@+id/bt_add_atividade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adicionar Atividade" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
