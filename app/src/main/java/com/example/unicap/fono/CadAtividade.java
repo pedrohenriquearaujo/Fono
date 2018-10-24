@@ -1,47 +1,69 @@
 package com.example.unicap.fono;
 
-import android.app.AppComponentFactory;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.unicap.Retrofit.Config.RetrofitConfig;
 import com.example.unicap.model.Atividade;
-import com.example.unicap.model.Licoes;
-import com.example.unicap.model.Paciente;
-import com.example.unicap.model.Video;
+import com.example.unicap.model.Licao;
 
 import java.util.ArrayList;
+import java.util.List;
 
-//adicionando exercicio
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class CadAtividade extends AppCompatActivity {
+
+
+
+
+    List<Licao> listLicoes = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_licoes);
-        ArrayList<Atividade>  atividadeArrayList = null;
-        ListView listView = findViewById(R.id.listViewLicao);
-
-       // if (bundle != null) {
-          //  a = (ArrayList<Atividade>) bundle.getSerializable("Paciente");
-        //}
-    //    Bundle bundle = getIntent().getParcelableArrayListExtra().get("adsf");
+            setContentView(R.layout.tela_licoes);
 
 
-         atividadeArrayList =  getIntent().getParcelableArrayListExtra("atividade");
+
+        Call<List<Licao>> call = new RetrofitConfig().getLicoesService().GetLicoes();
+
+
+        call.enqueue(new Callback<List<Licao>>() {
+            @Override
+            public void onResponse(Call<List<Licao>> call, Response<List<Licao>> response) {
+
+                List<Licao> listLicoes  =  response.body();
+
+                ListView listView = findViewById(R.id.listViewLicao);
+
+                listView.setAdapter(new LicaoAdapter(getApplicationContext(),listLicoes));
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Licao>> call, Throwable t) {
+
+
+            }
+        });
+
+
+
+
+       // atividadeArrayList =  getIntent().getParcelableArrayListExtra("atividade");
 
 
 
         //final Paciente paciente = p;
 
-        listView.setAdapter(new LicaoAdapter(this, carregarLicoes(),atividadeArrayList));
+
 
 
 
@@ -83,23 +105,27 @@ public class CadAtividade extends AppCompatActivity {
 
 
     }
-    public ArrayList<Licoes> carregarLicoes(){
+    public List<Licao> carregarLicoes(){
 
 
-        ArrayList<Licoes> licoes = new ArrayList<>();
-
-        licoes.add(new Licoes("Nome da Lição 1","Descrição da lição 1",new Video()));
-
-        licoes.add(new Licoes("Nome da Lição 2","Descrição da lição 2",new Video()));
-
-        licoes.add(new Licoes("Nome da Lição 3","Descrição da lição 3",new Video()));
-
-        licoes.add(new Licoes("Nome da Lição 4","Descrição da lição 4",new Video()));
-
-        licoes.add(new Licoes("Nome da Lição 5","Descrição da lição 5",new Video()));
+        Call<List<Licao>> call = new RetrofitConfig().getLicoesService().GetLicoes();
 
 
-        return licoes;
+        call.enqueue(new Callback<List<Licao>>() {
+            @Override
+            public void onResponse(Call<List<Licao>> call, Response<List<Licao>> response) {
+                listLicoes = (List<Licao>) response.body().get(0);
+            }
+
+            @Override
+            public void onFailure(Call<List<Licao>> call, Throwable t) {
+
+
+            }
+        });
+
+        return listLicoes;
+
 
     }
 

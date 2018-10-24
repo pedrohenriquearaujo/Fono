@@ -2,6 +2,7 @@ package com.example.unicap.fono;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -24,8 +25,12 @@ public class PacienteAdapter extends ArrayAdapter<Paciente> {
     private Context context;
     private List<Paciente> listPaciente;
 
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
-    public PacienteAdapter(@NonNull Context context, ArrayList<Paciente> listPaciente) {
+
+
+    public PacienteAdapter(@NonNull Context context, List<Paciente> listPaciente) {
         super(context, 0, listPaciente);
         this.context = context;
         this.listPaciente = listPaciente;
@@ -39,10 +44,6 @@ public class PacienteAdapter extends ArrayAdapter<Paciente> {
 
         final Paciente posicaoPaciente = listPaciente.get(position);
 
-//        Button btnAtividade = listItem.findViewById(R.id.bt_paciente);
-//        btnAtividade.setText(posicaoPaciente.getNome());
-
-
 
         CardView cardView = listItem.findViewById(R.id.bt_paciente);
 
@@ -54,7 +55,15 @@ public class PacienteAdapter extends ArrayAdapter<Paciente> {
 
         TextView idade = listItem.findViewById(R.id.text_idade);
 
-        idade.setText( String.valueOf( "Idade: "+ posicaoPaciente.getIdade()));
+        idade.setText( String.valueOf( "Nascimento: "+ posicaoPaciente.getDataNascimento()));
+
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("preferencias", Context.MODE_PRIVATE) ;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt("id",listPaciente.get(position).getId());
+        editor.apply();
+
 
 
 
@@ -65,11 +74,9 @@ public class PacienteAdapter extends ArrayAdapter<Paciente> {
             public void onClick(View v) {
 
                 Intent i = new Intent(context.getApplicationContext(),AtividadesActivity.class);
-                i.putExtra("Paciente",listPaciente.get(position));
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                Toast.makeText(context, listPaciente.get(position).getNome(), Toast.LENGTH_LONG).show();
-
-                context.startActivity(i);
+                context.getApplicationContext().startActivity(i);
             }
         });
 

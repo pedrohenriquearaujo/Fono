@@ -1,53 +1,85 @@
 package com.example.unicap.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Exercicio {
 
-    //private Atividade atividade;
-    private Date date;
-    private Status status;
-    private Audio audio;
+
+    private int id;
+
+    private byte[] audio;
+
+    private String status;
+
+    private String dataHoraMarcada;
+
+    private String dataHoraRealizado;
+
+    private Atividade atividade;
+
+
 
 
     public Exercicio() {
-
+        super();
+        // TODO Auto-generated constructor stub
     }
 
-    public Exercicio(Date date, Status status, Audio audio) {
-        this.date = date;
+
+
+    public Exercicio(int id, byte[] audio, String status, String dataHoraMarcada, String dataHoraRealizado, Atividade atividade) {
+        this.id = id;
+        this.audio = audio;
         this.status = status;
+        this.dataHoraMarcada = dataHoraMarcada;
+        this.dataHoraRealizado = dataHoraRealizado;
+        this.atividade = atividade;
     }
 
-    public Audio getAudio() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public byte[] getAudio() {
         return audio;
     }
 
-    public void setAudio(Audio audio) {
+    public void setAudio(byte[] audio) {
         this.audio = audio;
     }
 
-    public Date getDate() {
-
-
-
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
+    public String getDataHoraMarcada() {
+        return dataHoraMarcada;
+    }
 
+    public void setDataHoraMarcada(String dataHoraMarcada) {
+        this.dataHoraMarcada = dataHoraMarcada;
+    }
 
+    public String getDataHoraRealizado() {
+        return dataHoraRealizado;
+    }
 
+    public void setDataHoraRealizado(String dataHoraRealizado) {
+        this.dataHoraRealizado = dataHoraRealizado;
+    }
+
+    public Atividade getAtividade() {
+        return atividade;
+    }
+
+    public void setAtividade(Atividade atividade) {
+        this.atividade = atividade;
+    }
 }

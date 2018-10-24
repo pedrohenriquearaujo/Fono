@@ -1,52 +1,50 @@
 package com.example.unicap.fono;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.unicap.model.Licoes;
+import com.example.unicap.Retrofit.Config.RetrofitConfig;
+import com.example.unicap.model.Atividade;
+import com.example.unicap.model.Exercicio;
+import java.util.List;
 
-import java.util.ArrayList;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetalhesActivity extends AppCompatActivity {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_detalhes_atividade);
 
-        // TextView t = findViewById (R.id.nomePaciente);
-        //Button button = findViewById (R.id.bt_add_licao);
 
-        ListView listView;
+        Call<List<Atividade>> call = new RetrofitConfig().getAtividadeService().listarAtividade();
 
+        call.enqueue(new Callback<List<Atividade>>() {
+            @Override
+            public void onResponse(Call<List<Atividade>> call, Response<List<Atividade>> response) {
 
-        listView = findViewById(R.id.listGravacao);
+                Atividade atividade = response.body().get(0);
 
-        listView.setAdapter(new AudioAdapter(this, carregarLicoes()));
-
-    }
-
-    public ArrayList<Licoes> carregarLicoes(){
-        ArrayList<Licoes> listLicoes = new ArrayList<>();
-        Licoes pedro, avelino, pitt, matheus;
-
-        pedro = new Licoes( "Audio 1");
-        avelino = new Licoes("Audio 2");
-        pitt =  new Licoes("Audio 3");
-        matheus  = new Licoes("Audio 4");
-
-
-        listLicoes.add(pedro);
-        listLicoes.add(avelino);
-        listLicoes.add(pitt);
-        listLicoes.add(matheus);
+                 List<Exercicio> exercicioList = atividade.getExercicios();
 
 
 
-        return listLicoes;
+                 ListView listView = findViewById(R.id.listGravacao);
+
+                 listView.setAdapter(new AudioAdapter(getApplicationContext(), exercicioList));
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Atividade>> call, Throwable t) {
+
+            }
+        });
 
 
     }

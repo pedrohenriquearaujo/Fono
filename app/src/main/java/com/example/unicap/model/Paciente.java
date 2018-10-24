@@ -1,37 +1,36 @@
 package com.example.unicap.model;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 
-public class Paciente implements Serializable {
+public class Paciente {
+
+    private int id;
 
     private String nome;
-    private int idade;
-    private String sexo;
+
     private String descricao;
-    private ArrayList<Atividade> atividadeArrayList;
 
-    public Paciente(String nome, int idade, String sexo, String descricao) {
+    private String sexo;
+
+    private String dataNascimento;
+
+    public Paciente() {
+        super();
+    }
+
+    public Paciente(int id, String nome, String descricao, String sexo, String dataNascimento) {
+        this.id = id;
         this.nome = nome;
-        this.idade = idade;
-        this.sexo = sexo;
         this.descricao = descricao;
-    }
-
-    public Paciente(String nome, int idade, String sexo, String descricao, ArrayList<Atividade> atividadeArrayList) {
-        this.nome = nome;
-        this.idade = idade;
         this.sexo = sexo;
-        this.descricao = descricao;
-        this.atividadeArrayList = atividadeArrayList;
+        this.dataNascimento = dataNascimento;
     }
 
-    public ArrayList<Atividade> getAtividadeArrayList() {
-        return atividadeArrayList;
+    public int getId() {
+        return id;
     }
 
-    public void setAtividadeArrayList(ArrayList<Atividade> atividadeArrayList) {
-        this.atividadeArrayList = atividadeArrayList;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -42,12 +41,12 @@ public class Paciente implements Serializable {
         this.nome = nome;
     }
 
-    public int getIdade() {
-        return idade;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getSexo() {
@@ -58,11 +57,66 @@ public class Paciente implements Serializable {
         this.sexo = sexo;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
+
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
+        result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+        result = prime * result + id;
+        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+        result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Paciente other = (Paciente) obj;
+        if (dataNascimento == null) {
+            if (other.dataNascimento != null)
+                return false;
+        } else if (!dataNascimento.equals(other.dataNascimento))
+            return false;
+        if (descricao == null) {
+            if (other.descricao != null)
+                return false;
+        } else if (!descricao.equals(other.descricao))
+            return false;
+        if (id != other.id)
+            return false;
+        if (nome == null) {
+            if (other.nome != null)
+                return false;
+        } else if (!nome.equals(other.nome))
+            return false;
+        if (sexo == null) {
+            if (other.sexo != null)
+                return false;
+        } else if (!sexo.equals(other.sexo))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", sexo=" + sexo
+                + ", dataNascimento=" + dataNascimento ;
+    }
+
+
 }
