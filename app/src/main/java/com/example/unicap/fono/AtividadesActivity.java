@@ -31,56 +31,32 @@ public class AtividadesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_detalhes_paciente);
 
-
-
-
-
-
         Call<List<Atividade>> call = new RetrofitConfig().getAtividadeService().listarAtividade();
-
 
         call.enqueue(new Callback<List<Atividade>>() {
             @Override
             public void onResponse(Call<List<Atividade>> call, Response<List<Atividade>> response) {
                 List<Atividade> atividadeList = response.body();
-
                 ListView listView = findViewById(R.id.listViewAtividade);
-
-
                 listView.setAdapter(new AtividadeAdapter(getApplicationContext(), atividadeList));
-
             }
 
             @Override
             public void onFailure(Call<List<Atividade>> call, Throwable t) {
-
-
+                    Toast.makeText(getApplicationContext(),"FALHOU",Toast.LENGTH_SHORT).show();
             }
         });
 
 
         Button button = findViewById (R.id.bt_add_atividade);
 
-
-
-
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
-                //
-
                 Intent i = new Intent(getApplicationContext(),CadAtividade.class); //ir para tela de cadastrar atividade
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-
-
-
-
-
               //  i.putParcelableArrayListExtra("atividade", atividadeArrayList);
-
                 getApplicationContext().startActivity(i);
             }
         });

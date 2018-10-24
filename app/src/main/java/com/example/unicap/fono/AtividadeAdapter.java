@@ -42,8 +42,6 @@ public class AtividadeAdapter extends ArrayAdapter<Atividade> {
 
         final Atividade posicaoAtividade = atividadeList.get(position);
 
-
-
         CardView cardView = listItem.findViewById(R.id.cardAtividade);
 
 
@@ -55,18 +53,6 @@ public class AtividadeAdapter extends ArrayAdapter<Atividade> {
         TextView data = listItem.findViewById(R.id.textData);
 
         data.setText(posicaoAtividade.getDataCriacao());
-
-//        SimpleDateFormat s;
-//        s = new SimpleDateFormat("dd/M/yyyy");
-//
-//        Date d = posicaoPaciente.getData();
-//        if ( d != null ) {
-//
-//            String date = s.format(posicaoPaciente.getData());
-//
-//            data.setText(String.format("Data: %s", String.valueOf(date)));
-//        }
-
 
         ProgressBar progressBar = listItem.findViewById(R.id.progressBar);
         progressBar.setMax(3);

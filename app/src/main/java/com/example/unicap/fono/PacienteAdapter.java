@@ -65,9 +65,6 @@ public class PacienteAdapter extends ArrayAdapter<Paciente> {
         editor.apply();
 
 
-
-
-
         cardView.setOnClickListener(new View.OnClickListener() {
 
             @Override
