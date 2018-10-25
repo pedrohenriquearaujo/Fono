@@ -1,7 +1,10 @@
 package com.example.unicap.fono;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,11 +18,14 @@ import retrofit2.Response;
 
 public class PacientesActivity extends AppCompatActivity {
 
+    Button btnAdicionarPaciente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pacientes);
+
+        btnAdicionarPaciente = (Button) findViewById(R.id.btn_adcPaciente);
 
         Call<List<Paciente>> call = new RetrofitConfig().getPacienteService().GetPacientes();
 
@@ -42,9 +48,19 @@ public class PacientesActivity extends AppCompatActivity {
             }
         });
 
+        btnAdicionarPaciente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirTelaCadastroPaciente();
+            }
+        });
 
+    }
 
-
+    public void abrirTelaCadastroPaciente(){
+        Intent intent = new Intent(PacientesActivity.this,CadastroPaciente.class);
+        startActivity(intent);
+        finish();
 
     }
 

@@ -52,12 +52,6 @@ public class PacienteAdapter extends ArrayAdapter<Paciente> {
 
         nome.setText(posicaoPaciente.getNome());
 
-
-        TextView idade = listItem.findViewById(R.id.text_idade);
-
-        idade.setText( String.valueOf( "Nascimento: "+ posicaoPaciente.getDataNascimento()));
-
-
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("preferencias", Context.MODE_PRIVATE) ;
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
