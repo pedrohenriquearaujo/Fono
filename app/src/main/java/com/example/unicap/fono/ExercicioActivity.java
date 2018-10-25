@@ -57,9 +57,7 @@ public class ExercicioActivity extends AppCompatActivity {
         data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                //To show current date in the datepicker
-                Calendar mcurrentDate = Calendar.getInstance();
+                final Calendar mcurrentDate = Calendar.getInstance();
                 int mYear = mcurrentDate.get(Calendar.YEAR);
                 int mMonth = mcurrentDate.get(Calendar.MONTH);
                 int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
@@ -67,11 +65,11 @@ public class ExercicioActivity extends AppCompatActivity {
                 DatePickerDialog mDatePicker;
                 mDatePicker = new DatePickerDialog(ExercicioActivity.this, new DatePickerDialog.OnDateSetListener() {
                     public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
-                        // TODO Auto-generated method stub
-                    /*      Your code   to get date and time    */
                         selectedmonth = selectedmonth + 1;
-                        data.setText("" + selectedday + "-" + selectedmonth + "-" + selectedyear);
-                        dataFormatada = "" + selectedyear + "-" + selectedmonth + "-" + selectedday;
+                        data.setText("" + selectedday + "/" + selectedmonth + "/" + selectedyear);
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        mcurrentDate.set(selectedyear, selectedmonth - 1, selectedday);
+                        dataFormatada = sdf.format(mcurrentDate.getTime());
                     }
                 }, mYear, mMonth, mDay);
                 mDatePicker.setTitle("Select Date");
@@ -82,8 +80,7 @@ public class ExercicioActivity extends AppCompatActivity {
         hora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Calendar mcurrentTime = Calendar.getInstance();
+                final Calendar mcurrentTime = Calendar.getInstance();
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
@@ -91,6 +88,9 @@ public class ExercicioActivity extends AppCompatActivity {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         hora.setText( selectedHour + ":" + selectedMinute + ":00");
+                        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                        mcurrentTime.set(2018,10,25,selectedHour, selectedMinute,0);
+                        hora.setText(sdf.format(mcurrentTime.getTime()));
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
