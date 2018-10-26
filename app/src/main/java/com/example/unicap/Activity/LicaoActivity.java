@@ -1,10 +1,12 @@
-package com.example.unicap.fono;
+package com.example.unicap.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.example.unicap.Retrofit.Config.RetrofitConfig;
+import com.example.unicap.fono.LicaoAdapter;
+import com.example.unicap.fono.R;
 import com.example.unicap.model.Atividade;
 import com.example.unicap.model.Licao;
 import com.example.unicap.model.Paciente;

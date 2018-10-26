@@ -1,4 +1,4 @@
-package com.example.unicap.fono;
+package com.example.unicap.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.unicap.Retrofit.Config.RetrofitConfig;
+import com.example.unicap.fono.LicaoAdapter;
+import com.example.unicap.fono.R;
 import com.example.unicap.model.Atividade;
 import com.example.unicap.model.Licao;
 
@@ -18,7 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class CadAtividade extends AppCompatActivity {
+public class CadastrarAtividadeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.example.unicap.fono;
+package com.example.unicap.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.unicap.Retrofit.Config.RetrofitConfig;
+import com.example.unicap.fono.CadastroPaciente;
+import com.example.unicap.fono.PacienteAdapter;
+import com.example.unicap.fono.R;
 import com.example.unicap.model.Paciente;
 import java.util.List;
 
@@ -24,6 +27,8 @@ public class PacientesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pacientes);
+
+        getSupportActionBar().setTitle("Pacientes");
 
         btnAdicionarPaciente = (Button) findViewById(R.id.btn_adcPaciente);
 
@@ -60,8 +65,6 @@ public class PacientesActivity extends AppCompatActivity {
     public void abrirTelaCadastroPaciente(){
         Intent intent = new Intent(PacientesActivity.this,CadastroPaciente.class);
         startActivity(intent);
-        finish();
-
     }
 
 }

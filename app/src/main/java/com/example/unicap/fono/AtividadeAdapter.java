@@ -11,13 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.unicap.Activity.DetalhesActivity;
 import com.example.unicap.model.Atividade;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class AtividadeAdapter extends ArrayAdapter<Atividade> {
@@ -64,9 +61,6 @@ public class AtividadeAdapter extends ArrayAdapter<Atividade> {
             public void onClick(View v) {
 
                 Intent i = new Intent(context.getApplicationContext(),DetalhesActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-
                 context.startActivity(i);
 
             }

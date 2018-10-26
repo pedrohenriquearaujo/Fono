@@ -4,27 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PacientesActivity">
+    tools:context="com.example.unicap.Activity.PacientesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Pacientes"
-            android:textColor="@android:color/background_dark"
-            android:textSize="35sp" />
-
         <Button
             android:id="@+id/btn_adcPaciente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Adicionar Paciente" />
+            android:text="Cadastrar Paciente" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -11,18 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PacientesActivity">
+        <activity android:name="com.example.unicap.Activity.PacientesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AtividadesActivity" />
-        <activity android:name=".LicaoActivity" />
-        <activity android:name=".CadAtividade" />
-        <activity android:name=".DetalhesActivity" />
-        <activity android:name=".ExercicioActivity" />
+        <activity android:name="com.example.unicap.Activity.AtividadesActivity" />
+        <activity android:name=".CadastroPaciente" />
+        <activity android:name="com.example.unicap.Activity.LicaoActivity" />
+        <activity android:name="com.example.unicap.Activity.CadastrarAtividadeActivity" />
+        <activity android:name="com.example.unicap.Activity.DetalhesActivity" />
+        <activity android:name="com.example.unicap.Activity.ExercicioActivity" />
     </application>
 
 </manifest>

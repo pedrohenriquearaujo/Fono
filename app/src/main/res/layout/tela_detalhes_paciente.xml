@@ -16,21 +16,21 @@
             android:id="@+id/textNome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome: Pedro Henrique"
+            android:text="Nome: "
             android:textSize="25sp" />
 
         <TextView
             android:id="@+id/textIdade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Idade: 24 anos"
+            android:text="Data de Nacimento: "
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/textSexo"
+            android:id="@+id/textDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descrição detalhada do paciente"
+            android:text="Descrição: "
             android:textSize="25sp" />
 
         <TextView

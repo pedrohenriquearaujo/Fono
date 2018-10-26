@@ -3,7 +3,6 @@ package com.example.unicap.fono;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -12,11 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.unicap.model.Atividade;
+import com.example.unicap.Activity.ExercicioActivity;
 import com.example.unicap.model.Licao;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class LicaoAdapter extends ArrayAdapter<Licao> {
@@ -61,8 +58,6 @@ public class LicaoAdapter extends ArrayAdapter<Licao> {
             public void onClick(View v) {
 
                 Intent i = new Intent(context.getApplicationContext(),ExercicioActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
                 context.startActivity(i);
             }
         });

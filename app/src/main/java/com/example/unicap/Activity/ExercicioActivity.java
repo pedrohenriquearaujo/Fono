@@ -1,6 +1,5 @@
-package com.example.unicap.fono;
+package com.example.unicap.Activity;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -14,23 +13,20 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.unicap.Retrofit.Config.RetrofitConfig;
+import com.example.unicap.fono.ExercicioAdapter;
+import com.example.unicap.fono.R;
 import com.example.unicap.model.Atividade;
 import com.example.unicap.model.Exercicio;
 import com.example.unicap.model.Licao;
 import com.example.unicap.model.Paciente;
-import com.example.unicap.model.Status;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;

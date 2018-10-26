@@ -1,10 +1,13 @@
-package com.example.unicap.fono;
+package com.example.unicap.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.unicap.Retrofit.Config.RetrofitConfig;
+import com.example.unicap.fono.AudioAdapter;
+import com.example.unicap.fono.R;
 import com.example.unicap.model.Atividade;
 import com.example.unicap.model.Exercicio;
 import java.util.List;
@@ -15,14 +18,14 @@ import retrofit2.Response;
 
 public class DetalhesActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_detalhes_atividade);
 
 
-        Call<List<Atividade>> call = new RetrofitConfig().getAtividadeService().listarAtividade();
+
+        Call<List<Atividade>> call = new RetrofitConfig().getAtividadeService().listarAtividade(1);
 
         call.enqueue(new Callback<List<Atividade>>() {
             @Override
@@ -48,4 +51,6 @@ public class DetalhesActivity extends AppCompatActivity {
 
 
     }
+
+
 }
